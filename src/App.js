@@ -38,6 +38,7 @@ class App extends Component {
   }
 
   render() {
+    // console.log(this.state.videoNum);
     return (
       <div className="App">
         {this.state.videos.map((list, index) => {
@@ -49,7 +50,15 @@ class App extends Component {
             </section>
           );
         })}
-        {this.state.showSkeleton && <SkeletonCard />}
+        {this.state.videos.map((list, index) => {
+          return (
+            <section key={index}>
+              <h2 className="section-title">{list.section}</h2>
+              {this.state.showSkeleton && <SkeletonCard list={list} />}
+              <hr />
+            </section>
+          );
+        })}
       </div>
     );
   }
